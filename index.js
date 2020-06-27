@@ -19,7 +19,7 @@ app.use(express.static('./Views'))
 app.use(router)
 app.use(shopkeeperRouter)
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server listening on port 3000')
 })
 
