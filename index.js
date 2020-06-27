@@ -19,6 +19,10 @@ app.use(express.static('./Views'))
 app.use(router)
 app.use(shopkeeperRouter)
 
+app.get('/', function(req, res) {
+    res.send("to make sure that the app is deployed")
+})
+
 app.listen(process.env.PORT, () => {
     console.log('Server listening on port 3000')
 })
