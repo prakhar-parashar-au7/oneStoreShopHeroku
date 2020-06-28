@@ -21,12 +21,12 @@ const userSchema = new schema ({
     },
 
     
-    locationFromVerticalRoad : {
+    locationFromVerticalRoadInKM : {
         type : Number, 
         required : true    
     },
     
-    locationFromHorizontalRoad : {
+    locationFromHorizontalRoadInKM : {
         type : Number,
         required : true
     },

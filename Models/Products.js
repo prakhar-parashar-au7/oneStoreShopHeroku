@@ -11,17 +11,17 @@ const productSchema = new schema({
 
     priceInInr : {
         type : Number,
-       // required : true
+        required : true
     },
 
     features : {
         type : Array,
-       // required : true
+        required : true
     },
 
     piecesAvailable : {
         type : Number,
-       // required : true
+        required : true
     },
 
     shop : {

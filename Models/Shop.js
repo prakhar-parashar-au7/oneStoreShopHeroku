@@ -6,22 +6,22 @@ const shopSchema = new Schema({
     Name : {
         type : String,
         required : true,
-        //unique : true   
+        unique : true   
     },
 
     Category : {
         type : String,
-        //required : true
+        required : true
     },
     
-    locationFromVerticalRoad : {
+    locationFromVerticalRoadInKm : {
         type : Number, 
-       // required : true    
+        required : true    
     },
     
-    locationFromHorizontalRoad : {
+    locationFromHorizontalRoadinKM : {
         type : Number,
-        //required : true
+        required : true
     },
 
     shopkeeper : {

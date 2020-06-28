@@ -17,5 +17,7 @@ Router.post('/userLogInPost', controllers.logInPost, cookieHandler.sendCookie)
 
 Router.get('/user/listShops', cookieHandler.cookieRecieved, controllers.listShops)
 
+Router.get('user/shops/listProducts', controllers.listProducts)
+
 
 export default Router

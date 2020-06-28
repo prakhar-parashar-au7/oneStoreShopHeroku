@@ -7,9 +7,10 @@ import Products from '../Models/Products.js'
 
 const controllers = {
 
+    //About Shopkeeper
+
     signUpPage : (req, res) => {
-        res.render('signUp')
-       
+        res.render('signUp')       
     },
 
     signUpPost : (req, res) => {
@@ -51,6 +52,10 @@ const controllers = {
        
     },
 
+
+
+    //All about Shops
+
     addShop : (req, res) => {        
         const shop = new Shop(req.body)
 
@@ -81,7 +86,46 @@ const controllers = {
         })
 
     },
+
+    updateShop : async (req, res) => {
+        shopId = req.params.id 
+
+        if(req.body.Name){
+          await Shop.findByIdAndUpdate(shopId, {Name : req.body.Name})
+        }
+
+        if(req.body.Category){
+           await Shop.findByIdAndUpdate(shopId, {Category : req.body.Category})
+        }
+
+        if(req.body.locationFromVerticalRoadInKM){
+           await Shop.findByIdAndUpdate(shopId, {locationFromVerticalRoadInKM : req.body.locationFromVerticalRoadInKM})
+        }
+
+        if(req.body.locationFromHorizontalRoadInKM){
+           await Shop.findByIdAndUpdate(shopId, {locationFromHorizontalRoadInKM : req.body.locationFromHorizontalRoadInKM})
+        }
+
+        res.json({
+            message : 'shop has been updated'
+        })
+
+    },
+
+    removeShop : (req, res) => {
+        shopId = req.params.id
+
+        Shop.findByIdAndRemove(shopId, (shop) => {
+            res.json({message : 'shop listed below is removed',
+                     shop : shop
+                         })
+        })
+    },
     
+
+  // All about Products
+
+
     addProducts : (req, res) => {
 
         Products.create(req.body)
@@ -108,11 +152,49 @@ const controllers = {
 
     },
 
-    
+    updateProduct : async (req, res) => {
+        productId = req.params.id 
+
+    if(req.body.Name){
+        await Products.findByIdAndUpdate(productId, {Name : req.body.Name})
+      }
+
+      if(req.body.priceInInr){
+         await Products.findByIdAndUpdate(productId, {priceInInr : req.body.priceInInr})
+      }
+
+      if(req.body. features){
+         await Products.findByIdAndUpdate(productId, { features : req.body. features})
+      }
+
+      if(req.body.piecesAvailable){
+         await Products.findByIdAndUpdate(productId, {piecesAvailable : req.body.piecesAvailable})
+      }
+
+      res.json({
+          status : 200,
+          message : "Product has been updated"
+      })
+
+},
+
+  
+removeShop : (req, res) => {
+    productId = req.params.id
+
+    Products.findByIdAndRemove(productId, (product) => {
+        res.json({message : 'Product listed below is removed',
+                 shop : shop
+                     })
+    })
+}
 
 
 
-}        
+
+} 
+
+
 
 
 export default controllers
