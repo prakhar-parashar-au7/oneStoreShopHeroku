@@ -4,7 +4,7 @@
   "description": "See where you can find the product you need",
   "main": "controller.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "npx nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
