@@ -7,11 +7,7 @@ const Router = express()
 
 Router.use(cookieParser())
 
-Router.get('/userSignUp', controllers.signUpPage) 
-
 Router.post('/userSignUpPost', controllers.signUpPost)
-
-Router.get('/userLogInPage', controllers.logInPage)
 
 Router.post('/userLogInPost', controllers.logInPost, cookieHandler.sendCookie)
 

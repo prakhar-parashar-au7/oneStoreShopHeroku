@@ -7,11 +7,9 @@ const Router = express.Router()
 const {check, validationResult} = expressValidator
 
 
-Router.get('shopkeepersignUp', controllers.signUpPage) 
+
 
 Router.post('/shopkeeperSignUpPost', controllers.signUpPost)
-
-Router.get('/shopkeeperLogInPage', controllers.logInPage)
 
 Router.post('/shopkeeperLogInPost', controllers.logInPost)
 

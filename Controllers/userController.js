@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 
 import Products from '../Models/Products.js'
 
-import bcrypt from 'brcypt'
+import bcrypt from 'bcrypt'
 
 
 

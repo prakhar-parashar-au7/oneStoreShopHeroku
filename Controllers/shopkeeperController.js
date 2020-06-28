@@ -9,10 +9,6 @@ const controllers = {
 
     //About Shopkeeper
 
-    signUpPage : (req, res) => {
-        res.render('signUp')       
-    },
-
     signUpPost : (req, res) => {
          Shopkeeper.create(req.body)
          .then((user, err) => {
@@ -32,10 +28,6 @@ const controllers = {
          )
 
     
-    },
-
-    logInPage : (req, res) => {
-        res.render('logIn')
     },
 
     logInPost : (req, res) => {
