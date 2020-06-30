@@ -77,11 +77,13 @@ const controllers = {
              })
              Shops.find((err,shops) => {
                  if (err) {console.log(err)}
+                 
                  User.find({userName : user.userName}, (err,currentUser) => {
 
                      if(err) {console.log(err)}
-                     
-                    
+
+                    // console.log(currentUser[0].locationFromVerticalRoadInKM)
+
                      for (let i=0; i<shops.length; i++){
                           const xShop = shops[i].locationFromVerticalRoadInKM;
                           
@@ -90,13 +92,16 @@ const controllers = {
                           const xUser = currentUser[0].locationFromVerticalRoadInKM;
                           
                           const yUser= currentUser[0].locationFromHorizontalRoadInKM;
+
+                       //   console.log(xShop, yShop, xUser, yUser)
                           
 
                           const distance = Math.sqrt(Math.pow(xShop-xUser,2) + Math.pow(yShop-yUser,2))
 
-
+                        //  console.log(distance)
                           shops[i].locationFromUser = distance                 
                      }
+                     //console.log(shops)
                      
                      shops.sort(function(a,b){
                         return a.locationFromUser - b.locationFromUser

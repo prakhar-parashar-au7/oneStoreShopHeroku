@@ -14,12 +14,12 @@ const shopSchema = new Schema({
         required : true
     },
     
-    locationFromVerticalRoadInKm : {
+    locationFromVerticalRoadInKM : {
         type : Number, 
         required : true    
     },
     
-    locationFromHorizontalRoadinKM : {
+    locationFromHorizontalRoadInKM : {
         type : Number,
         required : true
     },

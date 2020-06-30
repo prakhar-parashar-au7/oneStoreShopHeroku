@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
     res.send("to make sure that the app is deployed")
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT||3000, () => {
     console.log('Server listening on port 3000')
 })
 
