@@ -31,6 +31,11 @@ const userSchema = new schema ({
         required : true
     },
 
+    orderPending : {
+        type : Boolean,
+        default : false
+    }
+
 
 })
 

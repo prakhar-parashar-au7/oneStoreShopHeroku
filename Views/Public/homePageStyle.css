@@ -1,0 +1,27 @@
+
+#hero {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+#user {
+    order: 1;
+    background-color: #46a3fc;
+    height: 100%;
+    width : 100%;
+    text-align: center; 
+}
+
+#shopKeeper {
+    order: 2;
+    background-color: #27ebfa;
+    height: 100%;
+    width : 100%;
+    text-align: center; 
+
+}
+
+#button {
+    margin-top : 300px;
+}

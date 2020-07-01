@@ -21,12 +21,22 @@ const productSchema = new schema({
 
     piecesAvailable : {
         type : Number,
-        required : true
+        required : true,
     },
 
     shop : {
         type : schema.Types.ObjectId,
         ref : 'Shop'
+    },
+
+    Category : {
+        type : String,
+        default : ""      
+    },
+
+    currentBookings : {
+        type : Number,
+        default : 0
     }
 
 })

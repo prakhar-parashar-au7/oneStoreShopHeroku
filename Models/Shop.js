@@ -11,7 +11,8 @@ const shopSchema = new Schema({
 
     Category : {
         type : String,
-        required : true
+        required : true,
+     enum: ["Electronics","Furnitures","Automobiles","Health&Welness","GeneralStore"]
     },
     
     locationFromVerticalRoadInKM : {
@@ -29,7 +30,7 @@ const shopSchema = new Schema({
         ref : 'Shopkeeper'
     },
 
-    deliveryAvailable : {
+    oneDayDeliveryAvailable : {
         type : Boolean,
         required : true
     },
@@ -42,6 +43,14 @@ const shopSchema = new Schema({
     locationFromUser : {
         type : Number,
         default:0
+    },
+    successfulDeliveries : {
+        type : Number,
+        default : 0
+    },
+    failedDeliveries : {
+        type : Number, 
+        default : 0
     }
 
 })

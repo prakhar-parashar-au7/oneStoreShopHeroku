@@ -9,6 +9,10 @@ const controllers = {
 
     //About Shopkeeper
 
+    signUpPage : (req, res) => {
+        res.render('shopkeeperSignUp')
+    },
+
     signUpPost : (req, res) => {
          Shopkeeper.create(req.body)
          .then((user, err) => {
@@ -21,8 +25,7 @@ const controllers = {
              }
              res.json({
                  status : 200,
-                 message : "Registration Successful",
-                 user : user
+                 message : "Shopkeeper registered"
              })
          }
          )
@@ -48,7 +51,28 @@ const controllers = {
 
     //All about Shops
 
-    addShop : (req, res) => {        
+    addShop : (req, res) => { 
+        if (req.body.Category == 0) {
+            req.body.Category = "Electronics"
+        }
+
+        else if (req.body.Category == 1) {
+            req.body.Category = "Furnitures"
+        }
+
+        else if (req.body.Category == 2) {
+            req.body.Category = "Automobiles"
+        }
+        else if (req.body.Category == 3) {
+            req.body.Category = "Health&Welness"
+        }
+        else if (req.body.Category == 4) {
+            req.body.Category = "GeneralStore"
+        }
+
+        else {
+            res.send("Choose one of the category correctly")
+        }
         const shop = new Shop(req.body)
 
         shop.save((err) => {
@@ -68,6 +92,7 @@ const controllers = {
                     message: 'Server Error : cannot add shopkeeper to this shop',
                     error : err
                 })
+                console.log(shop)
                 res.json({
                 status : 200,
                 message : "Shop listed successfully",
@@ -118,14 +143,14 @@ const controllers = {
   // All about Products
 
 
-    addProducts : (req, res) => {
+    addProducts : async (req, res) => {
 
         Products.create(req.body)
-        .then((product) => {
+        .then((productCreated) => {
 
-            Products.findOne({Name : product.Name})
+            Products.findOne({Name : productCreated.Name})
             .populate('shop')
-            .exec( (err, product)=> {
+            .exec( (err, productPopulated)=> {
                 if (err) {
                     res.json({
                         status : 500,
@@ -133,16 +158,24 @@ const controllers = {
                         error : err
                     })
                 }
-                res.json({
-                    status : 200,
-                    message : "Product listed successfully",
-                    product : product
+                    console.log(productPopulated.shop.Category)
+                    Products.findByIdAndUpdate(productCreated._id, {Category : productPopulated.shop.Category}, (err,prod) => {
+                        if(err) {}
+                        console.log(prod)
+                    })
+                    res.json({
+                        status : 200,
+                        message : "Product listed successfully",
+                        product : productPopulated
+                    })
+
                 })
+               
             })
-        })
+        },
 
 
-    },
+    
 
     updateProduct : async (req, res) => {
         productId = req.params.id 
